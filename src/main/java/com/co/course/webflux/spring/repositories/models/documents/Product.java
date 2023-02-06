@@ -1,16 +1,19 @@
 package com.co.course.webflux.spring.repositories.models.documents;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
-@Document(collation = "products")
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@Document(collection = "products")
 public class Product {
 
     @Id
+    @Setter @Getter
     private String id;
 
     @Setter @Getter
@@ -22,4 +25,8 @@ public class Product {
     @Setter @Getter
     private LocalDate createAt;
 
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
 }
